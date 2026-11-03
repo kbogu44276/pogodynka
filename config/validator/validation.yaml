@@ -1,0 +1,64 @@
+
+App\Entity\Measurement:
+    properties:
+        date:
+            - NotNull:
+                  groups: [new, edit]
+                  message: 'Date is required.'
+
+        celsius:
+            - NotNull:
+                  groups: [new, edit]
+                  message: 'Temperature is required.'
+            - Range:
+                  min: -30
+                  max: 40
+                  notInRangeMessage: 'Temperature must be between -30 and 40°C.'
+                  groups: [new, edit]
+
+        wind:
+            - PositiveOrZero:
+                  message: 'Wind speed cannot be negative.'
+                  groups: [new, edit]
+
+        pressure:
+            - Positive:
+                  message: 'Pressure must be greater than zero.'
+                  groups: [new, edit]
+
+        chanceOfPrecipitation:
+            - Range:
+                  min: 0
+                  max: 100
+                  notInRangeMessage: 'Chance of precipitation must be between 0 and 100%.'
+                  groups: [new, edit]
+
+        location:
+            - NotNull:
+                  message: 'Location is required.'
+                  groups: [new, edit]
+
+
+
+App\Entity\Location:
+    properties:
+        latitude:
+            - NotNull:
+                  groups: [new, edit]
+                  message: 'Latitude is required.'
+            - Range:
+                  min: -90
+                  max: 90
+                  notInRangeMessage: 'Latitude must be between -90 and 90.'
+                  groups: [new, edit]
+
+        longitude:
+            - NotNull:
+                  groups: [new, edit]
+                  message: 'Longitude is required.'
+            - Range:
+                  min: -180
+                  max: 180
+                  notInRangeMessage: 'Longitude must be between -180 and 180.'
+                  groups: [new, edit]
+
